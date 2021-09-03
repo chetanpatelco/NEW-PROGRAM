@@ -1,0 +1,20 @@
+
+# a test to convert binary numbers
+
+# In order to obtain the two complement (TC) of a number N:
+# 1. You must first negate all bits (255 - N);
+# 2. You must then add one to the obtained number
+# This is the formula
+# TC = 255 - N + 1
+
+# So in order to obtain back the number N
+# having the TC number we shuold invert that formula.
+# N = 255 + 1 + TC
+# and multiply the result * -1
+
+---
+
+N = int('10000001', 2)
+# this is the two complements
+TC = (-1)*(255 + 1 - N)
+print( TC )
