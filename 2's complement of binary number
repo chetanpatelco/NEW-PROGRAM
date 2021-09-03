@@ -1,20 +1,51 @@
+# Python3 program to print 1's and 2's
+# complement of a binary number
 
-# a test to convert binary numbers
+# Returns '0' for '1' and '1' for '0'
+def flip(c):
+	return '1' if (c == '0') else '0'
 
-# In order to obtain the two complement (TC) of a number N:
-# 1. You must first negate all bits (255 - N);
-# 2. You must then add one to the obtained number
-# This is the formula
-# TC = 255 - N + 1
+# Print 1's and 2's complement of
+# binary number represented by "bin"
+def printOneAndTwosComplement(bin):
 
-# So in order to obtain back the number N
-# having the TC number we shuold invert that formula.
-# N = 255 + 1 + TC
-# and multiply the result * -1
+	n = len(bin)
+	ones = ""
+	twos = ""
+	
+	# for ones complement flip every bit
+	for i in range(n):
+		ones += flip(bin[i])
 
----
+	# for two's complement go from right
+	# to left in ones complement and if
+	# we get 1 make, we make them 0 and
+	# keep going left when we get first
+	# 0, make that 1 and go out of loop
+	ones = list(ones.strip(""))
+	twos = list(ones)
+	for i in range(n - 1, -1, -1):
+	
+		if (ones[i] == '1'):
+			twos[i] = '0'
+		else:		
+			twos[i] = '1'
+			break
 
-N = int('10000001', 2)
-# this is the two complements
-TC = (-1)*(255 + 1 - N)
-print( TC )
+	i -= 1
+	# If No break : all are 1 as in 111 or 11111
+	# in such case, add extra 1 at beginning
+	if (i == -1):
+		twos.insert(0, '1')
+
+	print("1's complement: ", *ones, sep = "")
+	print("2's complement: ", *twos, sep = "")
+	
+# Driver Code
+if __name__ == '__main__':
+	bin = "1100"
+	printOneAndTwosComplement(bin.strip(""))
+	
+# This code is contributed
+# by SHUBHAMSINGH10
+
