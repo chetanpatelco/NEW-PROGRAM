@@ -46,6 +46,5 @@ if __name__ == '__main__':
 	bin = "1100"
 	printOneAndTwosComplement(bin.strip(""))
 	
-# This code is contributed
-# by SHUBHAMSINGH10
+
 
